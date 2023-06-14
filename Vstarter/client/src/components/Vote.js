@@ -33,7 +33,7 @@ function Vote({ state, account }) {
 
 
     return (
-      <div>
+      <div >
         <form className="form" onSubmit={Castvote}>
           <p className="status">Voting Status: {status}</p>
           <label className="label2" htmlFor="voterId">

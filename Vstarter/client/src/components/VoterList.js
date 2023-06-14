@@ -14,26 +14,38 @@ function VoterList({state,account}) {
     contract && LIST();
 
   },[state]);
+
+
   return <>
   <h1>Voter List</h1>
-  {list.map((voters)=>{
-    return (
-      <>
       <table>
-        <tbody>
+        <thead>
           <tr>
-            <td>{voters.name}</td>
-            <td>{voters.voterId}</td>
-            <td>{voters.voterAddress}</td>
-            <td>{voters.voteCandidateId}</td>
-            <td>{voters.gender}</td>
+          <th>voters Name</th>
+          <th>voterId </th>
+          <th>voterAddress</th>
+          <th>voteCandidateId</th>
+          <th>Gender</th>
           </tr>
-        </tbody>
-        </table> 
-      </>
 
-    )
-  })}
+        </thead>
+        
+          <tbody>
+          {list.map((voters)=>{
+    return (
+          <tr key={voters.voterId}>
+            <td>  {voters.name}</td>
+            <td> {voters.voterId}</td>
+            <td> {voters.voterAddress}</td>
+            <td> {voters.voteCandidateId}</td>
+            <td>  {voters.gender}</td>
+          </tr>
+      
+      
+      )
+    })}
+    </tbody>
+    </table> 
   </>;
 }
 export default VoterList;

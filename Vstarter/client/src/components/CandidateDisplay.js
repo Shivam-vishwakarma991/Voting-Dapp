@@ -22,21 +22,34 @@ function CandidateDisplay({state,account}) {
 
   return <>
 
-  {List.map((candidate)=>{
-        return (
+ 
     <table>
-      <tbody>
+      <thead>
         <tr>
-          <td> candidate name {candidate.name}  </td> 
-          <td> candidate votes {candidate.votes}  </td> 
-          <td> candidate party {candidate.party}</td>
-          <td> candidateId {candidate.candidateId}</td>
-          <td> candidate Address {candidate.candidateAddress}</td>
+
+        <th>candidate name</th>
+        <th>candidate votes</th>
+        <th>candidate party</th>
+        <th>candidateId</th>
+        <th>candidate Address </th>
+        </tr>
+      </thead>
+      <tbody>
+      {List.map((candidate)=>{
+        return (
+        <tr key={candidate.candidateId}>
+          <td>  {candidate.name}  </td> 
+          <td>  {candidate.votes}  </td> 
+          <td>  {candidate.party}</td>
+          <td>  {candidate.candidateId}</td>
+          <td> {candidate.candidateAddress}</td>
           {/* <td> voter Address {candidate.voterAddress}</td> */}
         </tr>
-      </tbody>
-    </table>)
+        )
   })}
+  
+  </tbody>
+</table>
 
 
   </>;

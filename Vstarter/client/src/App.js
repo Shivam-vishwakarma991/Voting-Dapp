@@ -7,6 +7,7 @@ import Web3 from "web3";
 import { useEffect, useState } from "react";
 import "./App.css";
 import ElectionCommision from "./components/ElectionCommision";
+import detectEthereumProvider from "@metamask/detect-provider";
 
 
 function App() {
@@ -16,20 +17,45 @@ function App() {
   });
   const [account, setAccount] = useState("Not connected");
 
+  // useEffect(() => {
+  //   async function init() {
+  //     const provider = new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
+  //     const web3 = new Web3(provider);
+  //     //console.log(web3);
+  //     const networkId = await web3.eth.net.getId();
+  //     const deployedNetwork = Vote.networks[networkId];
+  //     //console.log("Contract Address:", deployedNetwork.address);
+  //     const contract = new web3.eth.Contract(Vote.abi, deployedNetwork.address);
+  //     //console.log(contract);
+  //     setState({ web3: web3, contract: contract });
+  //   }
+  //   init();
+  // }, []);
+
+
   useEffect(() => {
-    async function init() {
-      const provider = new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
+    const initiate = async () => {
+      const provider = await detectEthereumProvider();
       const web3 = new Web3(provider);
-      //console.log(web3);
+      console.log(web3)
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = Vote.networks[networkId];
-      //console.log("Contract Address:", deployedNetwork.address);
+      console.log(networkId);
+      console.log(deployedNetwork);
       const contract = new web3.eth.Contract(Vote.abi, deployedNetwork.address);
-      //console.log(contract);
-      setState({ web3: web3, contract: contract });
-    }
-    init();
+      console.log(contract)
+      if (provider) {
+        provider.request({ method: "eth_requestAccounts" });
+        setState({ web3: web3, contract: contract });
+      } else {
+        console.error("Please install MetaMask");
+      }
+    };
+    initiate();
   }, []);
+
+
+
   useEffect(() => {
     const { web3 } = state;
     const allAccounts = async () => {
@@ -82,7 +108,7 @@ function App() {
       
       <p className="ca">Connected Account:{account}</p>
       
-      <form className="label0" id="myForm">
+      <form className="label0 form" id="myForm">
         <label htmlFor="">Choose an account</label>
         <select className="innerBox" id="selectNumber" onChange={selectAccount}>
           <option></option>

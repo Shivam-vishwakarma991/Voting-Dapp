@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Voting-Dapp/static/css/main.b27f2124.css",
+    "main.js": "/Voting-Dapp/static/js/main.0b31f64a.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/Voting-Dapp/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/back.png": "/Voting-Dapp/static/media/back.888a7669ac7e1929c63b.png",
+    "index.html": "/Voting-Dapp/index.html",
+    "main.b27f2124.css.map": "/Voting-Dapp/static/css/main.b27f2124.css.map",
+    "main.0b31f64a.js.map": "/Voting-Dapp/static/js/main.0b31f64a.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/Voting-Dapp/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b27f2124.css",
+    "static/js/main.0b31f64a.js"
+  ]
+}
